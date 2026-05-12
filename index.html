@@ -386,6 +386,25 @@ footer{
 .cert-subcat-dot.online{background:var(--blue);box-shadow:0 0 6px rgba(88,166,255,0.5);}
 .cert-subcat-dot.offline{background:var(--orange);box-shadow:0 0 6px rgba(240,136,62,0.5);}
 
+/* CERT DROPDOWN BODY */
+.cert-cat-body{
+  overflow:hidden;
+  max-height:0;
+  transition:max-height 0.45s cubic-bezier(0.4,0,0.2,1);
+}
+.cert-cat-body.open{
+  max-height:4000px;
+}
+.cert-cat-body-inner{padding:20px 0 8px;}
+.cert-cat-chevron{
+  margin-left:auto;color:var(--muted);flex-shrink:0;
+  transition:transform 0.35s cubic-bezier(0.4,0,0.2,1);
+}
+.cert-cat-header{cursor:pointer;user-select:none;}
+.cert-cat-header:hover .cert-cat-chevron{color:var(--blue);}
+.cert-cat-header.open .cert-cat-chevron{transform:rotate(180deg);}
+.cert-cat-text{flex:1;}
+
 /* CERT CARD HINT */
 .cert-view-hint{
   margin-top:12px;font-size:12px;color:var(--blue);
@@ -754,85 +773,97 @@ footer{
 
   <!-- ── CATEGORY 1: JOB CERTIFICATES ── -->
   <div class="cert-category reveal">
-    <div class="cert-cat-header">
+    <div class="cert-cat-header" onclick="toggleCat(this)">
       <div class="cert-cat-icon-wrap">💼</div>
-      <div>
+      <div class="cert-cat-text">
         <div class="cert-cat-title">Job Certificates</div>
         <div class="cert-cat-sub">Professional recognitions from current employment</div>
       </div>
       <div class="cert-cat-count">2</div>
-    </div>
-    <div class="ach-grid">
-      <div class="ach-card cert-card" data-cert="bel" onclick="openCert('bel')" style="cursor:pointer;">
-        <div class="ach-icon">🏅</div>
-        <div class="ach-title">Letter of Recommendation — BEL</div>
-        <div class="ach-desc">Received LOR for outstanding contributions to the IFMIS NextGen project at Bharat Electronics Limited.</div>
-        <span class="ach-tag">BEL · 2025</span>
-        <div class="cert-view-hint">Click to view →</div>
+      <div class="cert-cat-chevron">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
       </div>
-      <div class="ach-card cert-card" data-cert="mpgovt" onclick="openCert('mpgovt')" style="cursor:pointer;">
-        <div class="ach-icon">🏛️</div>
-        <div class="ach-title">Letter of Recommendation — MP Govt</div>
-        <div class="ach-desc">Received LOR from Government of Madhya Pradesh as IFMIS NG Module SPOC for exceptional coordination.</div>
-        <span class="ach-tag">MP Govt · 2025</span>
-        <div class="cert-view-hint">Click to view →</div>
+    </div>
+    <div class="cert-cat-body">
+      <div class="cert-cat-body-inner">
+        <div class="ach-grid">
+          <div class="ach-card cert-card" data-cert="bel" onclick="openCert('bel')" style="cursor:pointer;">
+            <div class="ach-icon">🏅</div>
+            <div class="ach-title">Letter of Recommendation — BEL</div>
+            <div class="ach-desc">Received LOR for outstanding contributions to the IFMIS NextGen project at Bharat Electronics Limited.</div>
+            <span class="ach-tag">BEL · 2025</span>
+            <div class="cert-view-hint">Click to view →</div>
+          </div>
+          <div class="ach-card cert-card" data-cert="mpgovt" onclick="openCert('mpgovt')" style="cursor:pointer;">
+            <div class="ach-icon">🏛️</div>
+            <div class="ach-title">Letter of Recommendation — MP Govt</div>
+            <div class="ach-desc">Received LOR from Government of Madhya Pradesh as IFMIS NG Module SPOC for exceptional coordination.</div>
+            <span class="ach-tag">MP Govt · 2025</span>
+            <div class="cert-view-hint">Click to view →</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
   <!-- ── CATEGORY 2: INTERNSHIP CERTIFICATES ── -->
   <div class="cert-category reveal">
-    <div class="cert-cat-header">
+    <div class="cert-cat-header" onclick="toggleCat(this)">
       <div class="cert-cat-icon-wrap">🎓</div>
-      <div>
+      <div class="cert-cat-text">
         <div class="cert-cat-title">Internship Certificates</div>
         <div class="cert-cat-sub">Academic and professional internship recognitions</div>
       </div>
       <div class="cert-cat-count">4</div>
-    </div>
-
-    <!-- Sub: Online -->
-    <div class="cert-subcat">
-      <div class="cert-subcat-label">
-        <span class="cert-subcat-dot online"></span>🌐 Online Internships
-      </div>
-      <div class="ach-grid">
-        <div class="ach-card cert-card" data-cert="sparks_app" onclick="openCert('sparks_app')" style="cursor:pointer;">
-          <div class="ach-icon">📱</div>
-          <div class="ach-title">App Development Internship</div>
-          <div class="ach-desc">Completed app development internship at The Sparks Foundation — building cross-platform mobile applications.</div>
-          <span class="ach-tag">The Sparks Foundation</span>
-          <div class="cert-view-hint">Click to view →</div>
-        </div>
-        <div class="ach-card cert-card" data-cert="sparks_web" onclick="openCert('sparks_web')" style="cursor:pointer;">
-          <div class="ach-icon">🌐</div>
-          <div class="ach-title">Web Development Internship</div>
-          <div class="ach-desc">Completed web development internship at The Sparks Foundation — building full-stack web applications and UI interfaces.</div>
-          <span class="ach-tag">The Sparks Foundation</span>
-          <div class="cert-view-hint">Click to view →</div>
-        </div>
+      <div class="cert-cat-chevron">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
       </div>
     </div>
-
-    <!-- Sub: Offline -->
-    <div class="cert-subcat">
-      <div class="cert-subcat-label">
-        <span class="cert-subcat-dot offline"></span>🏛️ Offline Internships
-      </div>
-      <div class="ach-grid">
-        <div class="ach-card cert-card" data-cert="iit_patna" onclick="openCert('iit_patna')" style="cursor:pointer;">
-          <div class="ach-icon">🍎</div>
-          <div class="ach-title">iOS App Development Internship</div>
-          <div class="ach-desc">Research internship at IIT Patna focused on iOS app development for medical ML applications using Swift and Xcode.</div>
-          <span class="ach-tag">IIT Patna</span>
-          <div class="cert-view-hint">Click to view →</div>
+    <div class="cert-cat-body">
+      <div class="cert-cat-body-inner">
+        <!-- Sub: Online -->
+        <div class="cert-subcat">
+          <div class="cert-subcat-label">
+            <span class="cert-subcat-dot online"></span>🌐 Online Internships
+          </div>
+          <div class="ach-grid">
+            <div class="ach-card cert-card" data-cert="sparks_app" onclick="openCert('sparks_app')" style="cursor:pointer;">
+              <div class="ach-icon">📱</div>
+              <div class="ach-title">App Development Internship</div>
+              <div class="ach-desc">Completed app development internship at The Sparks Foundation — building cross-platform mobile applications.</div>
+              <span class="ach-tag">The Sparks Foundation</span>
+              <div class="cert-view-hint">Click to view →</div>
+            </div>
+            <div class="ach-card cert-card" data-cert="sparks_web" onclick="openCert('sparks_web')" style="cursor:pointer;">
+              <div class="ach-icon">🌐</div>
+              <div class="ach-title">Web Development Internship</div>
+              <div class="ach-desc">Completed web development internship at The Sparks Foundation — building full-stack web applications and UI interfaces.</div>
+              <span class="ach-tag">The Sparks Foundation</span>
+              <div class="cert-view-hint">Click to view →</div>
+            </div>
+          </div>
         </div>
-        <div class="ach-card cert-card" data-cert="iit_palakkad" onclick="openCert('iit_palakkad')" style="cursor:pointer;">
-          <div class="ach-icon">🔬</div>
-          <div class="ach-title">Research Internship</div>
-          <div class="ach-desc">Research internship at IIT Palakkad contributing to academic research projects in computer science and engineering.</div>
-          <span class="ach-tag">IIT Palakkad</span>
-          <div class="cert-view-hint">Click to view →</div>
+        <!-- Sub: Offline -->
+        <div class="cert-subcat">
+          <div class="cert-subcat-label">
+            <span class="cert-subcat-dot offline"></span>🏛️ Offline Internships
+          </div>
+          <div class="ach-grid">
+            <div class="ach-card cert-card" data-cert="iit_patna" onclick="openCert('iit_patna')" style="cursor:pointer;">
+              <div class="ach-icon">🍎</div>
+              <div class="ach-title">iOS App Development Internship</div>
+              <div class="ach-desc">Research internship at IIT Patna focused on iOS app development for medical ML applications using Swift and Xcode.</div>
+              <span class="ach-tag">IIT Patna</span>
+              <div class="cert-view-hint">Click to view →</div>
+            </div>
+            <div class="ach-card cert-card" data-cert="iit_palakkad" onclick="openCert('iit_palakkad')" style="cursor:pointer;">
+              <div class="ach-icon">🔬</div>
+              <div class="ach-title">Research Internship</div>
+              <div class="ach-desc">Research internship at IIT Palakkad contributing to academic research projects in computer science and engineering.</div>
+              <span class="ach-tag">IIT Palakkad</span>
+              <div class="cert-view-hint">Click to view →</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -840,84 +871,280 @@ footer{
 
   <!-- ── CATEGORY 3: COURSE CERTIFICATES ── -->
   <div class="cert-category reveal">
-    <div class="cert-cat-header">
+    <div class="cert-cat-header" onclick="toggleCat(this)">
       <div class="cert-cat-icon-wrap">📚</div>
-      <div>
+      <div class="cert-cat-text">
         <div class="cert-cat-title">Course Certificates</div>
         <div class="cert-cat-sub">Online learning and professional skill development</div>
       </div>
       <div class="cert-cat-count">10</div>
+      <div class="cert-cat-chevron">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
     </div>
-    <div class="ach-grid">
-      <div class="ach-card cert-card" data-cert="aws" onclick="openCert('aws')" style="cursor:pointer;">
-        <div class="ach-icon">☁️</div>
-        <div class="ach-title">AWS Cloud Technical Essentials</div>
-        <div class="ach-desc">Certified in AWS Cloud fundamentals covering core services, architecture, and cloud computing concepts.</div>
-        <span class="ach-tag">Amazon Web Services</span>
-        <div class="cert-view-hint">Click to view →</div>
+    <div class="cert-cat-body">
+      <div class="cert-cat-body-inner">
+        <div class="ach-grid">
+          <div class="ach-card cert-card" data-cert="aws" onclick="openCert('aws')" style="cursor:pointer;">
+            <div class="ach-icon">☁️</div>
+            <div class="ach-title">AWS Cloud Technical Essentials</div>
+            <div class="ach-desc">Certified in AWS Cloud fundamentals covering core services, architecture, and cloud computing concepts.</div>
+            <span class="ach-tag">Amazon Web Services</span>
+            <div class="cert-view-hint">Click to view →</div>
+          </div>
+          <div class="ach-card cert-card" data-cert="forge" onclick="openCert('forge')" style="cursor:pointer;">
+            <div class="ach-icon">⚙️</div>
+            <div class="ach-title">Software Engineering Virtual Experience</div>
+            <div class="ach-desc">Completed Forge's software engineering virtual experience program covering real-world industry workflows and engineering practices.</div>
+            <span class="ach-tag">Forge · Virtual</span>
+            <div class="cert-view-hint">Click to view →</div>
+          </div>
+          <div class="ach-card cert-card" data-cert="google_security" onclick="openCert('google_security')" style="cursor:pointer;">
+            <div class="ach-icon">🛡️</div>
+            <div class="ach-title">IT Security: Defense Against the Digital Dark Arts</div>
+            <div class="ach-desc">Completed Google's IT Security course covering defense against digital threats, cryptography, and network security.</div>
+            <span class="ach-tag">Google · Coursera</span>
+            <div class="cert-view-hint">Click to view →</div>
+          </div>
+          <div class="ach-card cert-card" data-cert="hackerrank" onclick="openCert('hackerrank')" style="cursor:pointer;">
+            <div class="ach-icon">🐍</div>
+            <div class="ach-title">Python (Basic) Certification</div>
+            <div class="ach-desc">Verified Python programming proficiency through HackerRank's official certification covering OOP, data structures, and problem-solving.</div>
+            <span class="ach-tag">HackerRank</span>
+            <div class="cert-view-hint">Click to view →</div>
+          </div>
+          <div class="ach-card cert-card" data-cert="ibm_cyber" onclick="openCert('ibm_cyber')" style="cursor:pointer;">
+            <div class="ach-icon">🔐</div>
+            <div class="ach-title">Introduction to Cybersecurity Tools & Cyber Attacks</div>
+            <div class="ach-desc">IBM course on foundational security concepts, cybersecurity tools, types of cyber attacks, and threat analysis frameworks.</div>
+            <span class="ach-tag">IBM · Coursera</span>
+            <div class="cert-view-hint">Click to view →</div>
+          </div>
+          <div class="ach-card cert-card" data-cert="ibm_fullstack" onclick="openCert('ibm_fullstack')" style="cursor:pointer;">
+            <div class="ach-icon">🏗️</div>
+            <div class="ach-title">Full Stack Cloud Development Capstone</div>
+            <div class="ach-desc">Capstone project for IBM's Full Stack Cloud Developer program — built and deployed a cloud-native full-stack application.</div>
+            <span class="ach-tag">IBM · Coursera</span>
+            <div class="cert-view-hint">Click to view →</div>
+          </div>
+          <div class="ach-card cert-card" data-cert="ibm_python" onclick="openCert('ibm_python')" style="cursor:pointer;">
+            <div class="ach-icon">📊</div>
+            <div class="ach-title">Python for Data Science, AI & Development</div>
+            <div class="ach-desc">IBM-certified course covering Python for data science workflows, AI model basics, and applied development with Jupyter and Pandas.</div>
+            <span class="ach-tag">IBM · Coursera</span>
+            <div class="cert-view-hint">Click to view →</div>
+          </div>
+          <div class="ach-card cert-card" data-cert="ibm_datascience" onclick="openCert('ibm_datascience')" style="cursor:pointer;">
+            <div class="ach-icon">🤖</div>
+            <div class="ach-title">What is Data Science?</div>
+            <div class="ach-desc">IBM's foundational data science course exploring the data science lifecycle, tools, methodologies, and career pathways.</div>
+            <span class="ach-tag">IBM · Coursera</span>
+            <div class="cert-view-hint">Click to view →</div>
+          </div>
+          <div class="ach-card cert-card" data-cert="tata" onclick="openCert('tata')" style="cursor:pointer;">
+            <div class="ach-icon">🏆</div>
+            <div class="ach-title">TATA Crucible Campus Quiz 2023</div>
+            <div class="ach-desc">Participated in one of India's most prestigious campus quiz competitions organized by the Tata Group across business, tech, and current affairs.</div>
+            <span class="ach-tag">TATA · 2023</span>
+            <div class="cert-view-hint">Click to view →</div>
+          </div>
+          <div class="ach-card cert-card" data-cert="tcs" onclick="openCert('tcs')" style="cursor:pointer;">
+            <div class="ach-icon">🎯</div>
+            <div class="ach-title">TCS iON Career Edge — Young Professional</div>
+            <div class="ach-desc">Completed TCS iON's industry-readiness program covering business communication, professional ethics, and workplace skills.</div>
+            <span class="ach-tag">TCS iON</span>
+            <div class="cert-view-hint">Click to view →</div>
+          </div>
+        </div>
       </div>
-      <div class="ach-card cert-card" data-cert="forge" onclick="openCert('forge')" style="cursor:pointer;">
-        <div class="ach-icon">⚙️</div>
-        <div class="ach-title">Software Engineering Virtual Experience</div>
-        <div class="ach-desc">Completed Forge's software engineering virtual experience program covering real-world industry workflows and engineering practices.</div>
-        <span class="ach-tag">Forge · Virtual</span>
-        <div class="cert-view-hint">Click to view →</div>
+    </div>
+  </div>
+  <!-- ── CATEGORY 4: CO-CURRICULAR CERTIFICATES ── -->
+  <div class="cert-category reveal">
+    <div class="cert-cat-header" onclick="toggleCat(this)">
+      <div class="cert-cat-icon-wrap">🌟</div>
+      <div class="cert-cat-text">
+        <div class="cert-cat-title">Co-Curricular Certificates</div>
+        <div class="cert-cat-sub">Quizzes, competitions, workshops & extracurricular achievements</div>
       </div>
-      <div class="ach-card cert-card" data-cert="google_security" onclick="openCert('google_security')" style="cursor:pointer;">
-        <div class="ach-icon">🛡️</div>
-        <div class="ach-title">IT Support Professional — Security</div>
-        <div class="ach-desc">Completed Google's IT Security course covering defense against digital threats, cryptography, and network security.</div>
-        <span class="ach-tag">Google · Coursera</span>
-        <div class="cert-view-hint">Click to view →</div>
+      <div class="cert-cat-count">21</div>
+      <div class="cert-cat-chevron">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
       </div>
-      <div class="ach-card cert-card" data-cert="hackerrank" onclick="openCert('hackerrank')" style="cursor:pointer;">
-        <div class="ach-icon">🐍</div>
-        <div class="ach-title">Python (Basic) Certification</div>
-        <div class="ach-desc">Verified Python programming proficiency through HackerRank's official certification covering OOP, data structures, and problem-solving.</div>
-        <span class="ach-tag">HackerRank</span>
-        <div class="cert-view-hint">Click to view →</div>
-      </div>
-      <div class="ach-card cert-card" data-cert="ibm_cyber" onclick="openCert('ibm_cyber')" style="cursor:pointer;">
-        <div class="ach-icon">🔐</div>
-        <div class="ach-title">Introduction to Cybersecurity Tools & Cyber Attacks</div>
-        <div class="ach-desc">IBM course on foundational security concepts, cybersecurity tools, types of cyber attacks, and threat analysis frameworks.</div>
-        <span class="ach-tag">IBM · Coursera</span>
-        <div class="cert-view-hint">Click to view →</div>
-      </div>
-      <div class="ach-card cert-card" data-cert="ibm_fullstack" onclick="openCert('ibm_fullstack')" style="cursor:pointer;">
-        <div class="ach-icon">🏗️</div>
-        <div class="ach-title">Full Stack Cloud Development Capstone</div>
-        <div class="ach-desc">Capstone project for IBM's Full Stack Cloud Developer program — built and deployed a cloud-native full-stack application.</div>
-        <span class="ach-tag">IBM · Coursera</span>
-        <div class="cert-view-hint">Click to view →</div>
-      </div>
-      <div class="ach-card cert-card" data-cert="ibm_python" onclick="openCert('ibm_python')" style="cursor:pointer;">
-        <div class="ach-icon">📊</div>
-        <div class="ach-title">Python for Data Science, AI & Development</div>
-        <div class="ach-desc">IBM-certified course covering Python for data science workflows, AI model basics, and applied development with Jupyter and Pandas.</div>
-        <span class="ach-tag">IBM · Coursera</span>
-        <div class="cert-view-hint">Click to view →</div>
-      </div>
-      <div class="ach-card cert-card" data-cert="ibm_datascience" onclick="openCert('ibm_datascience')" style="cursor:pointer;">
-        <div class="ach-icon">🤖</div>
-        <div class="ach-title">What is Data Science?</div>
-        <div class="ach-desc">IBM's foundational data science course exploring the data science lifecycle, tools, methodologies, and career pathways.</div>
-        <span class="ach-tag">IBM · Coursera</span>
-        <div class="cert-view-hint">Click to view →</div>
-      </div>
-      <div class="ach-card cert-card" data-cert="tata" onclick="openCert('tata')" style="cursor:pointer;">
-        <div class="ach-icon">🏆</div>
-        <div class="ach-title">TATA Crucible Campus Quiz 2023</div>
-        <div class="ach-desc">Participated in one of India's most prestigious campus quiz competitions organized by the Tata Group across business, tech, and current affairs.</div>
-        <span class="ach-tag">TATA · 2023</span>
-        <div class="cert-view-hint">Click to view →</div>
-      </div>
-      <div class="ach-card cert-card" data-cert="tcs" onclick="openCert('tcs')" style="cursor:pointer;">
-        <div class="ach-icon">🎯</div>
-        <div class="ach-title">TCS iON Career Edge — Young Professional</div>
-        <div class="ach-desc">Completed TCS iON's industry-readiness program covering business communication, professional ethics, and workplace skills.</div>
-        <span class="ach-tag">TCS iON</span>
-        <div class="cert-view-hint">Click to view →</div>
+    </div>
+    <div class="cert-cat-body">
+      <div class="cert-cat-body-inner">
+        <div class="ach-grid">
+
+          <div class="ach-card cert-card" data-cert="mygov_gender" onclick="openCert('mygov_gender')" style="cursor:pointer;">
+            <div class="ach-icon">⚖️</div>
+            <div class="ach-title">Gender Sensitization & Legal Awareness Quiz</div>
+            <div class="ach-desc">Certificate from MyGov India for successfully completing the Gender Sensitization & Legal Awareness quiz.</div>
+            <span class="ach-tag">MyGov India</span>
+            <div class="cert-view-hint">Click to view →</div>
+          </div>
+
+          <div class="ach-card cert-card" data-cert="mygov_dekho1" onclick="openCert('mygov_dekho1')" style="cursor:pointer;">
+            <div class="ach-icon">🗺️</div>
+            <div class="ach-title">Dekho Apna Desh Webinar Quiz</div>
+            <div class="ach-desc">Certificate from MyGov India for participating in the Dekho Apna Desh Webinar Quiz promoting Indian tourism awareness.</div>
+            <span class="ach-tag">MyGov India</span>
+            <div class="cert-view-hint">Click to view →</div>
+          </div>
+
+          <div class="ach-card cert-card" data-cert="mygov_ayurveda" onclick="openCert('mygov_ayurveda')" style="cursor:pointer;">
+            <div class="ach-icon">🌿</div>
+            <div class="ach-title">E-Quiz on 5th Ayurveda Day</div>
+            <div class="ach-desc">Certificate from MyGov India for completing the e-quiz conducted on the occasion of the 5th Ayurveda Day.</div>
+            <span class="ach-tag">MyGov India</span>
+            <div class="cert-view-hint">Click to view →</div>
+          </div>
+
+          <div class="ach-card cert-card" data-cert="mygov_freedom" onclick="openCert('mygov_freedom')" style="cursor:pointer;">
+            <div class="ach-icon">🇮🇳</div>
+            <div class="ach-title">Quiz on 75 Years of Indian Freedom</div>
+            <div class="ach-desc">Certificate from MyGov India for participating in the quiz on 75 years of Indian freedom & contributions of freedom fighters.</div>
+            <span class="ach-tag">MyGov India</span>
+            <div class="cert-view-hint">Click to view →</div>
+          </div>
+
+          <div class="ach-card cert-card" data-cert="mygov_pcra" onclick="openCert('mygov_pcra')" style="cursor:pointer;">
+            <div class="ach-icon">💡</div>
+            <div class="ach-title">PCRA Conservation Quiz 14.0</div>
+            <div class="ach-desc">Certificate from MyGov India for completing the Petroleum Conservation Research Association (PCRA) Conservation Quiz 14.0.</div>
+            <span class="ach-tag">MyGov India</span>
+            <div class="cert-view-hint">Click to view →</div>
+          </div>
+
+          <div class="ach-card cert-card" data-cert="mygov_fraud" onclick="openCert('mygov_fraud')" style="cursor:pointer;">
+            <div class="ach-icon">🔒</div>
+            <div class="ach-title">Specialization Quiz — Online Financial Fraud</div>
+            <div class="ach-desc">Certificate from MyGov India for completing the specialization quiz on Online Financial Fraud awareness and prevention.</div>
+            <span class="ach-tag">MyGov India</span>
+            <div class="cert-view-hint">Click to view →</div>
+          </div>
+
+          <div class="ach-card cert-card" data-cert="mygov_divyang" onclick="openCert('mygov_divyang')" style="cursor:pointer;">
+            <div class="ach-icon">🤝</div>
+            <div class="ach-title">Divyangjan Sashaktikaran Quiz 2.0</div>
+            <div class="ach-desc">Certificate from MyGov India for participating in the Divyangjan Sashaktikaran "Kitne Jagruk Hai Hum" Quiz 2.0.</div>
+            <span class="ach-tag">MyGov India</span>
+            <div class="cert-view-hint">Click to view →</div>
+          </div>
+
+          <div class="ach-card cert-card" data-cert="mygov_knowledge" onclick="openCert('mygov_knowledge')" style="cursor:pointer;">
+            <div class="ach-icon">📜</div>
+            <div class="ach-title">Quiz on Indian Traditional Knowledge</div>
+            <div class="ach-desc">Certificate from MyGov India for completing the quiz on Indian Traditional Knowledge, heritage, and cultural practices.</div>
+            <span class="ach-tag">MyGov India</span>
+            <div class="cert-view-hint">Click to view →</div>
+          </div>
+
+          <div class="ach-card cert-card" data-cert="mygov_dekho2" onclick="openCert('mygov_dekho2')" style="cursor:pointer;">
+            <div class="ach-icon">🏞️</div>
+            <div class="ach-title">Dekho Apna Desh Webinar (Series II)</div>
+            <div class="ach-desc">Certificate from MyGov India for completing the second Dekho Apna Desh Webinar quiz series on Indian tourism and heritage.</div>
+            <span class="ach-tag">MyGov India</span>
+            <div class="cert-view-hint">Click to view →</div>
+          </div>
+
+          <div class="ach-card cert-card" data-cert="mygov_shoonya" onclick="openCert('mygov_shoonya')" style="cursor:pointer;">
+            <div class="ach-icon">🌱</div>
+            <div class="ach-title">Shoonya Pledge — Pollution Free India</div>
+            <div class="ach-desc">Certificate from MyGov India for taking the Shoonya Pledge for a pollution-free and sustainable environment.</div>
+            <span class="ach-tag">MyGov India</span>
+            <div class="cert-view-hint">Click to view →</div>
+          </div>
+
+          <div class="ach-card cert-card" data-cert="cvc_integrity" onclick="openCert('cvc_integrity')" style="cursor:pointer;">
+            <div class="ach-icon">🏛️</div>
+            <div class="ach-title">Integrity Pledge</div>
+            <div class="ach-desc">Certificate from the Central Vigilance Commission of India for taking the Integrity Pledge promoting ethical and corruption-free conduct.</div>
+            <span class="ach-tag">Central Vigilance Commission</span>
+            <div class="cert-view-hint">Click to view →</div>
+          </div>
+
+          <div class="ach-card cert-card" data-cert="symposium_placement" onclick="openCert('symposium_placement')" style="cursor:pointer;">
+            <div class="ach-icon">🎤</div>
+            <div class="ach-title">2-Day Placement Preparation Program</div>
+            <div class="ach-desc">Certificate of participation from a symposium covering a 2-day intensive placement preparation program with mock interviews and aptitude training.</div>
+            <span class="ach-tag">Symposium</span>
+            <div class="cert-view-hint">Click to view →</div>
+          </div>
+
+          <div class="ach-card cert-card" data-cert="nflat_2014" onclick="openCert('nflat_2014')" style="cursor:pointer;">
+            <div class="ach-icon">🏅</div>
+            <div class="ach-title">National Financial Literacy Assessment 2014</div>
+            <div class="ach-desc">Merit certificate from NFLAT for outstanding performance in the National Financial Literacy Assessment Test 2014.</div>
+            <span class="ach-tag">NFLAT · 2014</span>
+            <div class="cert-view-hint">Click to view →</div>
+          </div>
+
+          <div class="ach-card cert-card" data-cert="nflat_2015" onclick="openCert('nflat_2015')" style="cursor:pointer;">
+            <div class="ach-icon">🏅</div>
+            <div class="ach-title">National Financial Literacy Assessment 2015</div>
+            <div class="ach-desc">Merit certificate from NFLAT for outstanding performance in the National Financial Literacy Assessment Test 2015.</div>
+            <span class="ach-tag">NFLAT · 2015</span>
+            <div class="cert-view-hint">Click to view →</div>
+          </div>
+
+          <div class="ach-card cert-card" data-cert="camel_art" onclick="openCert('camel_art')" style="cursor:pointer;">
+            <div class="ach-icon">🎨</div>
+            <div class="ach-title">All India Camel Colour Contest 2013</div>
+            <div class="ach-desc">Certificate of participation in the All India Camel Colour Contest 2013, a national-level art competition for students.</div>
+            <span class="ach-tag">Camel · 2013</span>
+            <div class="cert-view-hint">Click to view →</div>
+          </div>
+
+          <div class="ach-card cert-card" data-cert="dancing_star" onclick="openCert('dancing_star')" style="cursor:pointer;">
+            <div class="ach-icon">💃</div>
+            <div class="ach-title">Dancing Star 2016</div>
+            <div class="ach-desc">Certificate of participation in Dancing Star 2016, a performing arts competition organised by Aristocratic Creations.</div>
+            <span class="ach-tag">Aristocratic Creations · 2016</span>
+            <div class="cert-view-hint">Click to view →</div>
+          </div>
+
+          <div class="ach-card cert-card" data-cert="kilkari_computer" onclick="openCert('kilkari_computer')" style="cursor:pointer;">
+            <div class="ach-icon">💻</div>
+            <div class="ach-title">Summer Vacation Computer Course 2013</div>
+            <div class="ach-desc">Certificate from Kilkari for completing a summer vacation computer course covering foundational computing skills in 2013.</div>
+            <span class="ach-tag">Kilkari · 2013</span>
+            <div class="cert-view-hint">Click to view →</div>
+          </div>
+
+          <div class="ach-card cert-card" data-cert="patna_museum" onclick="openCert('patna_museum')" style="cursor:pointer;">
+            <div class="ach-icon">🏺</div>
+            <div class="ach-title">Sangralaya Saptha 2018</div>
+            <div class="ach-desc">Certificate from Patna Sanghralya for participation in Sangralaya Saptha 2018 — a cultural and heritage awareness program.</div>
+            <span class="ach-tag">Patna Sanghralya · 2018</span>
+            <div class="cert-view-hint">Click to view →</div>
+          </div>
+
+          <div class="ach-card cert-card" data-cert="bob_canvas" onclick="openCert('bob_canvas')" style="cursor:pointer;">
+            <div class="ach-icon">🖌️</div>
+            <div class="ach-title">Bank of Baroda Canvas Competition 2014</div>
+            <div class="ach-desc">Certificate of participation in the Bank of Baroda Canvas Competition 2014, a national-level painting and creative arts contest.</div>
+            <span class="ach-tag">Bank of Baroda · 2014</span>
+            <div class="cert-view-hint">Click to view →</div>
+          </div>
+
+          <div class="ach-card cert-card" data-cert="sof_olympiad" onclick="openCert('sof_olympiad')" style="cursor:pointer;">
+            <div class="ach-icon">🔭</div>
+            <div class="ach-title">17th National Science Olympiad 2014</div>
+            <div class="ach-desc">Certificate from SOF for participating in the 17th Science Olympiad Foundation National Science Olympiad 2014.</div>
+            <span class="ach-tag">SOF · 2014</span>
+            <div class="cert-view-hint">Click to view →</div>
+          </div>
+
+          <div class="ach-card cert-card" data-cert="robotics_camp" onclick="openCert('robotics_camp')" style="cursor:pointer;">
+            <div class="ach-icon">🤖</div>
+            <div class="ach-title">Summer Vacation Hobby Camp — Robotics</div>
+            <div class="ach-desc">Certificate from Shrikrishna Science Center for completing the summer vacation hobby camp focused on robotics and hands-on engineering.</div>
+            <span class="ach-tag">Shrikrishna Science Center</span>
+            <div class="cert-view-hint">Click to view →</div>
+          </div>
+
+        </div>
       </div>
     </div>
   </div>
@@ -1342,8 +1569,248 @@ const certData = {
     skills: ['Business Communication', 'Professional Etiquette', 'Workplace Skills', 'Resume Writing', 'Interview Preparation', 'Industry Awareness'],
     work: 'Went through an intensive professional development program by TCS covering soft skills, business communication, email writing, interview techniques, and industry best practices. This certification bridges the gap between academic knowledge and corporate expectations.',
     image: ''
+  },
+
+  /* ── CO-CURRICULAR CERTIFICATES ── */
+  mygov_gender: {
+    icon: '⚖️',
+    title: 'Gender Sensitization & Legal Awareness Quiz',
+    issuer: 'MyGov India',
+    tag: 'MyGov India',
+    category: 'Co-Curricular Certificate',
+    description: 'Certificate awarded by MyGov India for successfully completing the Gender Sensitization & Legal Awareness Quiz — promoting awareness of gender equality, legal rights, and social justice.',
+    skills: ['Gender Awareness', 'Legal Knowledge', 'Social Sensitivity', 'Civic Education'],
+    work: 'Participated in the MyGov India online quiz on gender sensitization and legal awareness. Demonstrated understanding of gender equality principles, relevant laws protecting citizens\' rights, and the importance of inclusive social practices.',
+    image: ''
+  },
+  mygov_dekho1: {
+    icon: '🗺️',
+    title: 'Dekho Apna Desh Webinar Quiz',
+    issuer: 'MyGov India',
+    tag: 'MyGov India',
+    category: 'Co-Curricular Certificate',
+    description: 'Certificate from MyGov India for participating in the Dekho Apna Desh Webinar Quiz — an initiative by the Ministry of Tourism promoting awareness about India\'s diverse tourist destinations and heritage.',
+    skills: ['Tourism Awareness', 'Indian Heritage', 'Cultural Knowledge', 'Civic Participation'],
+    work: 'Attended the Dekho Apna Desh webinar and completed the associated quiz, exploring India\'s rich tourism landscape and cultural diversity across various states and union territories.',
+    image: ''
+  },
+  mygov_ayurveda: {
+    icon: '🌿',
+    title: 'E-Quiz on 5th Ayurveda Day',
+    issuer: 'MyGov India',
+    tag: 'MyGov India',
+    category: 'Co-Curricular Certificate',
+    description: 'Certificate from MyGov India for completing the e-quiz conducted on the occasion of the 5th National Ayurveda Day — celebrating India\'s ancient system of medicine and wellness.',
+    skills: ['Ayurveda Knowledge', 'Traditional Medicine', 'Health Awareness', 'Indian Heritage'],
+    work: 'Participated in the national e-quiz on the 5th Ayurveda Day, demonstrating knowledge of Ayurvedic principles, herbs, treatments, and the significance of traditional Indian medical practices in modern healthcare.',
+    image: ''
+  },
+  mygov_freedom: {
+    icon: '🇮🇳',
+    title: 'Quiz on 75 Years of Indian Freedom',
+    issuer: 'MyGov India',
+    tag: 'MyGov India',
+    category: 'Co-Curricular Certificate',
+    description: 'Certificate from MyGov India for participating in the quiz on 75 years of Indian Independence and the contributions of freedom fighters — part of the Azadi Ka Amrit Mahotsav initiative.',
+    skills: ['Indian History', 'Freedom Movement', 'Patriotism', 'Civic Knowledge'],
+    work: 'Completed the MyGov quiz marking 75 years of Indian independence, demonstrating in-depth knowledge of the freedom struggle, key historical events, and the sacrifices made by India\'s independence heroes.',
+    image: ''
+  },
+  mygov_pcra: {
+    icon: '💡',
+    title: 'PCRA Conservation Quiz 14.0',
+    issuer: 'MyGov India',
+    tag: 'MyGov India',
+    category: 'Co-Curricular Certificate',
+    description: 'Certificate from MyGov India for completing the PCRA (Petroleum Conservation Research Association) Conservation Quiz 14.0 — promoting awareness about energy conservation and sustainable fuel use.',
+    skills: ['Energy Conservation', 'Sustainability', 'Environmental Awareness', 'Petroleum Literacy'],
+    work: 'Participated in PCRA Conservation Quiz 14.0, demonstrating knowledge of petroleum conservation practices, efficient energy use, and the environmental impact of fossil fuel consumption.',
+    image: ''
+  },
+  mygov_fraud: {
+    icon: '🔒',
+    title: 'Specialization Quiz — Online Financial Fraud',
+    issuer: 'MyGov India',
+    tag: 'MyGov India',
+    category: 'Co-Curricular Certificate',
+    description: 'Certificate from MyGov India for completing the Specialization Quiz on Online Financial Fraud — raising awareness about digital scams, phishing, and financial cybercrime prevention.',
+    skills: ['Cyber Fraud Awareness', 'Digital Safety', 'Financial Literacy', 'Consumer Protection'],
+    work: 'Completed the MyGov specialization quiz on online financial fraud, covering types of digital scams, how to identify phishing attempts, safe online banking practices, and steps to take when fraud is detected.',
+    image: ''
+  },
+  mygov_divyang: {
+    icon: '🤝',
+    title: 'Divyangjan Sashaktikaran Quiz 2.0',
+    issuer: 'MyGov India',
+    tag: 'MyGov India',
+    category: 'Co-Curricular Certificate',
+    description: 'Certificate from MyGov India for participating in the "Divyangjan Sashaktikaran — Kitne Jagruk Hai Hum" Quiz 2.0, promoting awareness and empowerment of persons with disabilities.',
+    skills: ['Social Awareness', 'Disability Rights', 'Inclusive Society', 'Civic Education'],
+    work: 'Participated in the national quiz on Divyangjan (persons with disabilities) empowerment, demonstrating awareness of government schemes, rights, and programs aimed at creating an inclusive society for differently-abled individuals.',
+    image: ''
+  },
+  mygov_knowledge: {
+    icon: '📜',
+    title: 'Quiz on Indian Traditional Knowledge',
+    issuer: 'MyGov India',
+    tag: 'MyGov India',
+    category: 'Co-Curricular Certificate',
+    description: 'Certificate from MyGov India for completing the quiz on Indian Traditional Knowledge — covering ancient practices, crafts, sciences, and cultural wisdom passed through generations.',
+    skills: ['Indian Culture', 'Traditional Practices', 'Heritage Awareness', 'Knowledge Systems'],
+    work: 'Completed the MyGov quiz on Indian Traditional Knowledge, exploring topics such as traditional medicine, classical arts, handicrafts, agricultural techniques, and the importance of preserving indigenous knowledge systems.',
+    image: ''
+  },
+  mygov_dekho2: {
+    icon: '🏞️',
+    title: 'Dekho Apna Desh Webinar (Series II)',
+    issuer: 'MyGov India',
+    tag: 'MyGov India',
+    category: 'Co-Curricular Certificate',
+    description: 'Certificate from MyGov India for participating in the second Dekho Apna Desh Webinar Quiz series, continuing to explore India\'s tourism destinations, culture, and heritage.',
+    skills: ['Tourism Awareness', 'Cultural Knowledge', 'Indian Heritage', 'Civic Participation'],
+    work: 'Attended the second series of Dekho Apna Desh webinars and successfully completed the associated quiz, deepening knowledge of India\'s unexplored travel destinations and cultural landmarks.',
+    image: ''
+  },
+  mygov_shoonya: {
+    icon: '🌱',
+    title: 'Shoonya Pledge — Pollution Free India',
+    issuer: 'MyGov India',
+    tag: 'MyGov India',
+    category: 'Co-Curricular Certificate',
+    description: 'Certificate from MyGov India for taking the Shoonya Pledge — a national movement towards zero pollution, sustainable mobility, and cleaner cities through electric vehicles.',
+    skills: ['Environmental Commitment', 'Sustainability', 'EV Awareness', 'Green Initiative'],
+    work: 'Took the Shoonya Pledge as part of India\'s national initiative to encourage adoption of electric vehicles and reduce vehicular pollution. This demonstrates personal commitment to sustainable practices and environmental responsibility.',
+    image: ''
+  },
+  cvc_integrity: {
+    icon: '🏛️',
+    title: 'Integrity Pledge',
+    issuer: 'Central Vigilance Commission, India',
+    tag: 'Central Vigilance Commission',
+    category: 'Co-Curricular Certificate',
+    description: 'Certificate from the Central Vigilance Commission (CVC) of India for taking the Integrity Pledge — a national commitment to uphold transparency, ethics, and integrity in public and professional life.',
+    skills: ['Ethics & Integrity', 'Anti-Corruption Awareness', 'Civic Responsibility', 'Professional Conduct'],
+    work: 'Took the CVC Integrity Pledge as part of India\'s Vigilance Awareness Week initiative. This pledge signifies personal commitment to honest conduct, transparency in actions, and active resistance to corruption in all forms.',
+    image: ''
+  },
+  symposium_placement: {
+    icon: '🎤',
+    title: '2-Day Placement Preparation Program',
+    issuer: 'Symposium',
+    tag: 'Symposium',
+    category: 'Co-Curricular Certificate',
+    description: 'Certificate of participation in a 2-day intensive placement preparation program conducted at a college symposium, covering aptitude skills, group discussions, mock interviews, and resume building.',
+    skills: ['Aptitude Training', 'Group Discussion', 'Mock Interviews', 'Resume Writing', 'Communication Skills', 'Problem Solving'],
+    work: 'Participated in a 2-day placement preparation symposium covering all aspects of campus recruitment. Sessions included quantitative aptitude, logical reasoning, technical interview preparation, HR round simulations, and tips from industry professionals.',
+    image: ''
+  },
+  nflat_2014: {
+    icon: '🏅',
+    title: 'National Financial Literacy Assessment 2014',
+    issuer: 'NFLAT',
+    tag: 'NFLAT · 2014',
+    category: 'Co-Curricular Certificate',
+    description: 'Merit certificate from NFLAT (National Financial Literacy Assessment Test) 2014 for demonstrating exceptional understanding of financial concepts, savings, banking, and money management as a student.',
+    skills: ['Financial Literacy', 'Banking Basics', 'Savings & Investment', 'Money Management', 'Economic Awareness'],
+    work: 'Achieved merit level in the NFLAT 2014 national assessment, demonstrating strong foundational knowledge of personal finance, the Indian banking system, savings instruments, and the basics of financial planning at a young age.',
+    image: ''
+  },
+  nflat_2015: {
+    icon: '🏅',
+    title: 'National Financial Literacy Assessment 2015',
+    issuer: 'NFLAT',
+    tag: 'NFLAT · 2015',
+    category: 'Co-Curricular Certificate',
+    description: 'Merit certificate from NFLAT (National Financial Literacy Assessment Test) 2015 for outstanding performance in financial literacy, demonstrating consistent excellence across two consecutive years.',
+    skills: ['Financial Literacy', 'Banking & Finance', 'Investment Awareness', 'Economic Knowledge', 'Budgeting'],
+    work: 'Achieved merit standing in NFLAT 2015 for the second consecutive year, showing consistent growth in financial knowledge. Demonstrated understanding of advanced financial concepts including insurance, taxation basics, and goal-based financial planning.',
+    image: ''
+  },
+  camel_art: {
+    icon: '🎨',
+    title: 'All India Camel Colour Contest 2013',
+    issuer: 'Camel',
+    tag: 'Camel · 2013',
+    category: 'Co-Curricular Certificate',
+    description: 'Certificate of participation in the All India Camel Colour Contest 2013 — a prestigious national-level art competition organized by Camel, encouraging creativity and artistic expression among students.',
+    skills: ['Visual Arts', 'Creativity', 'Colour Theory', 'Artistic Expression'],
+    work: 'Participated in the All India Camel Colour Contest, creating original artwork for the national competition. This experience nurtured creativity, artistic discipline, and the ability to express ideas visually — skills that translate into strong UI/UX sensibilities.',
+    image: ''
+  },
+  dancing_star: {
+    icon: '💃',
+    title: 'Dancing Star 2016',
+    issuer: 'Aristocratic Creations',
+    tag: 'Aristocratic Creations · 2016',
+    category: 'Co-Curricular Certificate',
+    description: 'Certificate of participation in Dancing Star 2016, a performing arts competition organised by Aristocratic Creations, showcasing talent in dance and performing arts.',
+    skills: ['Performing Arts', 'Stage Presence', 'Dance', 'Team Performance', 'Discipline'],
+    work: 'Competed in the Dancing Star 2016 performing arts event, demonstrating artistic talent, stage confidence, and the discipline required for performance arts. This activity built public speaking comfort and team coordination skills.',
+    image: ''
+  },
+  kilkari_computer: {
+    icon: '💻',
+    title: 'Summer Vacation Computer Course 2013',
+    issuer: 'Kilkari',
+    tag: 'Kilkari · 2013',
+    category: 'Co-Curricular Certificate',
+    description: 'Certificate from Kilkari for successfully completing a summer vacation computer course in 2013 — an early introduction to computing that sparked the journey into technology.',
+    skills: ['Computer Basics', 'MS Office', 'Typing', 'Digital Literacy', 'Problem Solving'],
+    work: 'Completed a structured summer computer course at Kilkari covering fundamental computing skills including hardware basics, operating systems, MS Office applications, and introductory programming concepts. This was the beginning of a lifelong passion for technology.',
+    image: ''
+  },
+  patna_museum: {
+    icon: '🏺',
+    title: 'Sangralaya Saptha 2018',
+    issuer: 'Patna Sanghralya (Patna Museum)',
+    tag: 'Patna Sanghralya · 2018',
+    category: 'Co-Curricular Certificate',
+    description: 'Certificate from Patna Sanghralya for active participation in Sangralaya Saptha 2018 — Museum Week, a cultural program celebrating history, heritage, and the importance of museums in preserving civilisation.',
+    skills: ['Cultural Awareness', 'Heritage Appreciation', 'Historical Knowledge', 'Civic Engagement'],
+    work: 'Participated in Sangralaya Saptha (Museum Week) 2018 at Patna Museum, engaging in activities designed to raise awareness of India\'s historical and cultural heritage. The program featured guided tours, heritage quizzes, and cultural exhibitions.',
+    image: ''
+  },
+  bob_canvas: {
+    icon: '🖌️',
+    title: 'Bank of Baroda Canvas Competition 2014',
+    issuer: 'Bank of Baroda',
+    tag: 'Bank of Baroda · 2014',
+    category: 'Co-Curricular Certificate',
+    description: 'Certificate of participation in the Bank of Baroda Canvas Competition 2014 — a national-level painting competition encouraging creative expression and artistic talent among students.',
+    skills: ['Painting', 'Creative Arts', 'Visual Communication', 'Artistic Expression'],
+    work: 'Participated in the Bank of Baroda Canvas Competition 2014, creating original artwork that reflected creativity and visual storytelling. Such competitions helped develop aesthetic sensibility and the ability to communicate ideas through visuals.',
+    image: ''
+  },
+  sof_olympiad: {
+    icon: '🔭',
+    title: '17th National Science Olympiad 2014',
+    issuer: 'Science Olympiad Foundation (SOF)',
+    tag: 'SOF · 2014',
+    category: 'Co-Curricular Certificate',
+    description: 'Certificate from the Science Olympiad Foundation (SOF) for participating in the 17th National Science Olympiad 2014 — a competitive national exam testing scientific aptitude and reasoning.',
+    skills: ['Science', 'Logical Reasoning', 'Analytical Thinking', 'Physics', 'Chemistry', 'Biology'],
+    work: 'Participated in the SOF National Science Olympiad 2014, competing against thousands of students nationally. The olympiad tested knowledge across physics, chemistry, and biology along with scientific reasoning and problem-solving ability.',
+    image: ''
+  },
+  robotics_camp: {
+    icon: '🤖',
+    title: 'Summer Vacation Hobby Camp — Robotics',
+    issuer: 'Shrikrishna Science Center',
+    tag: 'Shrikrishna Science Center',
+    category: 'Co-Curricular Certificate',
+    description: 'Certificate from Shrikrishna Science Center for completing the Summer Vacation Hobby Camp on Robotics — an early hands-on exploration of engineering, circuits, and automation.',
+    skills: ['Robotics', 'Electronics Basics', 'Circuit Design', 'Problem Solving', 'Hands-on Engineering', 'Automation'],
+    work: 'Attended the robotics hobby camp at Shrikrishna Science Center during summer vacation, learning to build and program basic robots. This early exposure to engineering and automation laid the foundation for interest in technology, coding, and intelligent systems.',
+    image: ''
   }
 };
+
+function toggleCat(header) {
+  const body = header.nextElementSibling;
+  const isOpen = body.classList.contains('open');
+  body.classList.toggle('open', !isOpen);
+  header.classList.toggle('open', !isOpen);
+}
 
 function openCert(id) {
   const c = certData[id];
